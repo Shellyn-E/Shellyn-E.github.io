@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<head><title>Halaman Kontak</title></head>
+<html lang="en">
+<head>
+    <title>Kontak</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
 <body style="background-color:black;">
     <style type="text/css">
-        h2 {
+        label, h2 {
             color: red;
-        }
-    </style>
-    <style type="text/css">
-        td {
-            color: white;
-        }
-    </style>
-    <style type="text/css">
-        input {
-            color: black;
         }
     </style>
     <header>
@@ -35,28 +29,45 @@
         </table>
     </nav>
     <hr>
-    <h2 >Contact Form</h2> <br>
-    <form action="">
-        <table widht="400px" cellpading="5" border="0">
-            <tr>
-                <td>Nama Anda</td>
-                <td>Email</td>
-	        </tr>
-	        <tr>
-		        <td> <input type="text" name="name" size="21" /> </td>
-		        <td> <input type="email" name="email" size="21" /> </td>
-	        </tr>
-            <tr>
-		        <td colspan="2"> Pesan </td>
-	        </tr>
-	        <tr>
-		        <td colspan="2">
-		            <textarea name="pesan" cols="50" rows="4"></textarea>
-        </table>
-	    <p>
-            Submit <br>
-		    <input type="submit" name="proses" value="Send" />
-		    <input type="reset" name="reset" value="Reset" />
-        </p>
-    </form>
+    <div class="container">
+        <form name="formPendaftaran" method="post">
+            <div class="form-group">
+                <label>Nama</label>
+                <input type="text" name="nama" placeholder="Nama lengkap" class="form-control" required maxlength="40" minlength="3" id="nama">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Email Aktif" class="form-control" id="email">
+                <small id="emailHelp" class="form-text text-muted">Email Akan Digunakan Untuk Mengirimkan Notifikasi.</small>
+            </div>
+            <div class="form-group">
+                <label>Jurusan</label>
+                <select name="jurusan" class="form-control" id="jurusan">
+                        <option value="0">Pilih Jurusan</option>
+                        <option value="1">Jurusan Rekayasa Perangkat Lunak</option>
+                        <option value="2">Jurusan Teknik Komputer Jaringan</option>
+                        <option value="3">Jurusan Teknik Jaringan Akses</option>
+                    </select>
+            </div>
+            <button onclick="submitdata()"> Submit</button>
+            <script>
+                function submitdata() {
+                    var nama = document.getElementById("nama").value;
+                    var email = document.getElementById("email").value;
+                    var jurusan = document.getElementById("jurusan").value;
+
+                    
+                if (nama !="" && email !="" && jurusan!=""){
+                    document.getElementById("nama").innerHTML = nama
+                    document.getElementById("email").innerHTML = email
+                    document.getElementById("jurusan").innerHTML = jurusan
+                    return True;
+                }else{
+                    alert('Mohon isi form dengan lengkap !');
+                }
+                }
+            </script>
+        </form>
+    </div>
 </body>
+</html>
